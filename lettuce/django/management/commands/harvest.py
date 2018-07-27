@@ -39,10 +39,11 @@ DJANGO_VERSION = StrictVersion(django.get_version())
 class Command(BaseCommand):
     help = u'Run lettuce tests all along installed apps'
     args = '[PATH to feature file or folder]'
-    if DJANGO_VERSION < StrictVersion(‘1.7’):
-       requires_model_validation = False
+
+    if DJANGO_VERSION < StrictVersion('1.7'):
+        requires_model_validation = False
     else:
-       requires_system_checks = False
+        requires_system_checks = False
 
     option_list = BaseCommand.option_list + (
         make_option('-a', '--apps', action='store', dest='apps', default='',
